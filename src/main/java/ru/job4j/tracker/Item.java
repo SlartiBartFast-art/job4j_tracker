@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import org.w3c.dom.ls.LSOutput;
 
-
 import java.time.LocalDateTime;
 
 public class Item {
@@ -28,8 +27,6 @@ public class Item {
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
-
-
 }
 
 

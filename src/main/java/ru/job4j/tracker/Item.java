@@ -5,6 +5,11 @@ import org.w3c.dom.ls.LSOutput;
 import java.time.LocalDateTime;
 
 public class Item {
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", name='" + name + '\'' + ", created=" + created + '}';
+    }
+
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();

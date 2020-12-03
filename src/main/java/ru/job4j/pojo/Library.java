@@ -16,18 +16,17 @@ public class Library {
             System.out.println(bk.getName() + bk.getNumberOfPage());
         }
         System.out.println("Replace Book array[0] to array[3]");
-
+        System.out.println();
             Book rep = array[3];
             array[3] = array[0];
             array[0] = rep;
             for (int i = 0; i < array.length; i++) {
-                if (array[i] == array[3]) {
-                    System.out.println("Название книги: " + cleanCode.getName() + " Колличество страниц: " + cleanCode.getNumberOfPage());
+                String row = array[i].getName();
+                String cel = array[0].getName();
+                if (row == cel) {
+                    System.out.println("Название книги: "  + row);
                 }
             }
-
-
-
-
     }
 }
+

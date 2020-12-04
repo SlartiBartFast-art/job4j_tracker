@@ -21,10 +21,8 @@ public class Library {
             array[3] = array[0];
             array[0] = rep;
             for (int i = 0; i < array.length; i++) {
-                String row = array[i].getName();
-                String cel = array[0].getName();
-                if (row == cel) {
-                    System.out.println("Название книги: "  + row);
+                if ("Воздушные замки. Подробная инструкиция и чертежи".equals(array[i].getName())) {
+                    System.out.println("Название книги: " + array[i].getName());
                 }
             }
     }

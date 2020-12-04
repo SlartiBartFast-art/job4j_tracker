@@ -11,6 +11,11 @@ public class StartUI {
         System.out.println("Текущие дата и время после форматирования: " + message);
         Item text = new Item();
         System.out.println(text);
+
+        Tracker tracker = new Tracker();
+        tracker.add(current);
+
+        System.out.println(tracker.findById(1));
     }
 
 }

@@ -4,11 +4,11 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDateTime;
 
-public class Item {
+public class Item { //описывает модель заявления
 
 
-    private int id;
-    private String name;
+    private int id; // уникальный номер заявления
+    private String name; // название заявления
     private LocalDateTime created = LocalDateTime.now();
 
     public Item() {

@@ -34,7 +34,7 @@ public class Tracker {
     public Item[] findByName(String key) { // создание списка по имени в новый массив
         Item[] nameKey = new Item[items.length];
         int size = 0;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < this.size; i++) { // было int i = 0;  i < items.length; i++;- тоже самое только длина массива
             if (key.equals(items[i].getName())) { // сравнение метод эквалс
                 nameKey[size] = items[i];
                 size++;

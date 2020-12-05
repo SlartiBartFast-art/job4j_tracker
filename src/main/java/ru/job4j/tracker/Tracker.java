@@ -74,16 +74,24 @@ public class Tracker {
         }
         return rsl;
     }
-
+/** метод замены заявкиТо есть удалить заявку, которая уже есть в системе
+ * и добавить в эту ячейку новую.
+ * */
     public boolean replace(int id, Item item) {
         int index = indexOf(id); // находим индекс ячейки по id
         if (index >= 0) { // проверка что индекс полож число, т.к. метод indexOf может вернуть -1
-            int tmp = item.getId(); // сохраняем старый id
+
             item.setId(id); // проставляем новый id из параметров
             items[index] = item; // записать в ячеку с найденным индексом объект item
             return true; // вурнуть тру если замена произведена
         }
         return false; // вернть фалсу если index по id не найден
+    }
+
+/** метод удаления заявки
+ * */
+    public boolean delete(int id) {
+
     }
 
 }

@@ -91,7 +91,17 @@ public class Tracker {
 /** метод удаления заявки
  * */
     public boolean delete(int id) {
-
+        int startPos = indexOf(id); // вращаем индекс заявки которую надо рубануть
+        if (startPos == -1) {
+        return  false;
+        }
+        int distPos = startPos + 1;
+        int length = size - startPos;
+        System.arraycopy(items, startPos + 1, items, distPos, length); // перекопируем все в новый результ массив с темже именем
+        items[size - 1] = null;
+        size--;
+        return true;
     }
+
 
 }

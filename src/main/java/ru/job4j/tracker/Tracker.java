@@ -42,10 +42,7 @@ public class Tracker {
                 }
             }
         nameKey = Arrays.copyOf(nameKey, size);
-            for (int j = 0; j < nameKey.length; j++) {
-                System.out.println(nameKey[j]);
 
-        }
         return nameKey;
     }
 /**проверяет в цикле все элементы массива items, сравнивая id с аргументом int id

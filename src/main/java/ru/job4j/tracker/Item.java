@@ -11,6 +11,9 @@ public class Item { //описывает модель заявления
     private String name; // название заявления
     private LocalDateTime created = LocalDateTime.now();
 
+    public Item(String name) {
+        this.name = name;
+    }
     public Item() {
     }
 

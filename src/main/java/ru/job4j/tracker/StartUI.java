@@ -73,7 +73,7 @@ public class StartUI {
             }
 
             } else if (select == 6) {
-            int num = Integer.valueOf(scanner.nextLine());
+
             run = false;
             }
         }

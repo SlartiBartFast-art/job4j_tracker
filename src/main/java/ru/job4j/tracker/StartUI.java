@@ -1,32 +1,29 @@
 package ru.job4j.tracker;
 
-
-import java.util.Scanner;
-
 public class StartUI {
-    public void init(Scanner scanner, Tracker tracker) { // два объекта Scanner scanner, Tracker tracker
+    public void init(Input input, Tracker tracker) { // два объекта Scanner scanner/Input input(Отвязали, провели интерфейс) , Tracker tracker
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.print("Select: ");
-            int select = Integer.valueOf(scanner.nextLine());
+            int select = Integer.valueOf(input.askStr("Enter menu select number: "));//msg это сообщение которое мы бы хотели бы вывести пользователю перед его вводом, например "Enter id: ".
             if (select == 0) {
                 System.out.println("=== Create a new Item ====");
-                System.out.print("Enter name: ");
-                String name = scanner.nextLine();
+                String name = input.askStr("Please. Enter name new Item: "); //2 в отдном вопрос/ответ
                 Item item = new Item(name); //
                 tracker.add(item);
 
             } else if (select == 1) {  // получение всех заявок
                 Item[] item = tracker.findAll(); // записать в переменную массив? / вводим новую лок перемен
-                    for (int i = 0; i < item.length; i++) { //вывести массив по элементно цикл
-                    System.out.println(item[i]);
+                for (Item ar: item) {
+                System.out.println(ar);
                 }
+                /*for (int i = 0; i < item.length; i++) { //вывести массив по элементно цикл
+                    System.out.println(item[i]);*/
+
 
             } else if (select == 2) { // Edit item
-
-                int numId = Integer.valueOf(scanner.nextLine()); //приняли с консоли -конвертнули в int
-                String name = scanner.nextLine();
+                int numId = Integer.valueOf(input.askStr("Enter ids Item to edit: ")); //приняли с консоли -конвертнули в int
+                String name = input.askStr("Please. Enter new name item: ");
                 Item item = new Item();
                 item.setName(name);
                 boolean bol = tracker.replace(numId,item);
@@ -38,11 +35,8 @@ public class StartUI {
                     // вывод об ошибке
                 }
             } else if (select == 3) { // delete item
-
-                int id = Integer.valueOf(scanner.nextLine());
-
+                int id = Integer.valueOf(input.askStr("Please. Enter id which you want to delete: "));
                 boolean del = tracker.delete(id);
-
                 if (del) {
                     System.out.println("Операция выполнена успешно.");
                     // вывод об успешности операции
@@ -53,7 +47,7 @@ public class StartUI {
 
 
             } else if (select == 4) {
-                int id = Integer.valueOf(scanner.nextLine());       //4.1. Получить id заявки, которую мы будем искать в хранилище, через объект scanner;
+                int id = Integer.valueOf(input.askStr("Please. Enter id Item which you want to find: "));  //4.1. Получить id заявки, которую мы будем искать в хранилище, через объект scanner;
                 Item dez = tracker.findById(id);
                 if (dez != null) {
                     System.out.println(dez);
@@ -62,7 +56,7 @@ public class StartUI {
                 }
 
             } else if (select == 5) { // Пункт 5 - Find items by name:
-                String name = scanner.nextLine();
+                String name = input.askStr("Please. Enter name Item which you want find: ");
                 Item [] namez = tracker.findByName(name); // из п1 , почему не идет?
                 if (namez.length > 0) {
                     for (int i = 0; i < namez.length; i++) {
@@ -93,8 +87,9 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(input, tracker);
+
     }
 }

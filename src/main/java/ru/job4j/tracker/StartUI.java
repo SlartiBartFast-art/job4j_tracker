@@ -74,11 +74,7 @@ public class StartUI {
 
             } else if (select == 6) {
             int num = Integer.valueOf(scanner.nextLine());
-            if (num == 6) {
-                run = false;
-            } else {
-                this.showMenu();
-            }
+            run = false;
             }
         }
     }

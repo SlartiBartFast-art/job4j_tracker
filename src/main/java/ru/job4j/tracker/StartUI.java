@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.Scanner;
 public class StartUI {
 
     public static void createItem(Input input, Tracker tracker) {
@@ -61,14 +62,17 @@ public class StartUI {
     }
 
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) { // два объекта Scanner scanner/Input input(Отвязали, провели интерфейс) , Tracker tracker
+    public void init(Input input, Tracker tracker) { // два объекта Scanner scanner/Input input(Отвязали, провели интерфейс) , Tracker tracker
         boolean run = true;
         while (run) {
-            this.showMenu(actions);
+            this.showMenu();
+            System.out.println("Select: ");
+            int select = Integer.valueOf(input.askStr("Enter menu select number: "));
+            /*this.showMenu(actions);
             int select = input.askInt("Select: ");
             //int select = Integer.valueOf(input.askStr("Enter menu select number: ")); //msg это сообщение которое мы бы хотели бы вывести пользователю перед его вводом, например "Enter id: ".
             UserAction action = actions[select];
-            run = action.execute(input, tracker);
+            run = action.execute(input, tracker);*/
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
@@ -86,26 +90,27 @@ public class StartUI {
         }
     }
 }
-    private void showMenu(UserAction[] actions) {
+    private void showMenu() { /*(UserAction[] actions) {
         System.out.println("Menu.");
-        for (int index = 0; index < actions.length; index++) {
+        /*for (int index = 0; index < actions.length; index++) {
             System.out.println(index + ". " + actions[index].name());
-        }
-        /*System.out.println("0. Add new Item");
+        }*/
+        System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
         System.out.println("2. Edit item");
         System.out.println("3. Delete item");
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
-        System.out.println("Select: ");*/
+        System.out.println("Select: ");
     }
 
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction()};
-        new StartUI().init(input, tracker, actions);
+        new StartUI().init(input, tracker);
+       /* UserAction[] actions = {new CreateAction()};*/
+        /*new StartUI().init(input, tracker, actions);*/
 
     }
 }

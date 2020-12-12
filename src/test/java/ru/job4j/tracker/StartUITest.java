@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.Scanner;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.nullValue;
 
 public class StartUITest {
 
@@ -22,7 +23,7 @@ public class StartUITest {
         Tracker tracker = new Tracker(); //Создаем объект tracker.
         Item item = new Item("new item"); //Создаем объект item.
         tracker.add(item); // добаляем item в tracker. После этой операции у нас есть id."replaced item"/* id сохраненной заявки в объект tracker.
-        String[] answers = {String.valueOf(item.getId())}; //  Достаем item.id и создаем массив с ответами пользователя.
+        String[] answers = {String.valueOf(item.getId()), "replaced item"}; //  Достаем item.id и создаем массив с ответами пользователя.
         StartUI.editItem(new StubInput(answers), tracker); //Вызываем тестируемый метод replaceItem. Это действие изменит состояние объекта tracker.
         Item replaced = tracker.findById(item.getId()); //Ищем по item.id замененный item в объекте tracker.
         assertThat(replaced.getName(), is("replaced item")); //Сравниваем имя найденной заявки с ожидаемой.
@@ -35,6 +36,6 @@ public class StartUITest {
         String[] answer = {String.valueOf(item.getId())}; // Достаем item.id и создаем массив с ответами пользователя
         StartUI.deleteItem(new StubInput(answer), tracker); // //Вызываем тестируемый метод deleteItem. Это действие изменит состояние объекта tracker
         Item deleted = tracker.findById(item.getId());
-        assertThat(deleted.getName(), is("Операция выполнена успешно."));
+        assertThat(deleted, is(nullValue())); // сравниеваем действительность/ожидание
     }
 }

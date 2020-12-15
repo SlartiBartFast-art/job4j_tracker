@@ -23,7 +23,7 @@ public class CreatedFindItemByName implements UserAction {
             }
         } else {
             out.println("Заявки с таким именем не найдены.");
-            return false;
+
         }
         return true;
     }

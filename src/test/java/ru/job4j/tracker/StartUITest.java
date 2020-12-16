@@ -6,58 +6,94 @@ import static org.hamcrest.core.IsNull.nullValue;
 
 public class StartUITest {
 
-   /* @Test
+    @Test
     public void whenCreateItem() {
-        Input in = new StubInput(new String[] {"0", "Item name", "1"});
+        Input in = new StubInput(new String[]{"0", "Item name", "1"});
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new CreateExit()};
-        new StartUI().init(in, tracker, actions);
+        Output output = new ConsoleOutput();
+        UserAction[] actions = {new CreateAction(output), new CreateExit(output)};
+        new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
+
     @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
+        Output output = new ConsoleOutput();
         /* Добавим в tracker новую заявку */
-      /*  Item item = tracker.add(new Item("Replaced item"));
+        Item item = tracker.add(new Item("Replaced item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
-       /* String id = "1";
+        String id = "1";
         //int id = item.getId();
-         String replacedName = "New item name";
-        Input in = new StubInput(new String[] {"0", "1", "New item name", "1"}); /* входные параметры для ReplaceAction */
-       /* UserAction[] actions = {new CreateEditItem(), new CreateExit()};
-        new StartUI().init(in, tracker, actions);
+        String replacedName = "New item name";
+        Input in = new StubInput(new String[]{"0", "1", "New item name", "1"}); /* входные параметры для ReplaceAction */
+        UserAction[] actions = {new CreateEditItem(output),
+                new CreateExit(output)};
+        new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
-    }*/
+    }
 
-   /* @Test
+    @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
+        Output output = new ConsoleOutput();
         /* Добавим в tracker новую заявку */
-      /*  Item item = tracker.add(new Item("Deleted item"));
+        Item item = tracker.add(new Item("Deleted item"));
         String id = "1";
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
-     /*   Input in = new StubInput(new String[] {"0", "1", "1"});
-        UserAction[] actions = {new CreateDeleteItem(), new CreateExit()};
-        new StartUI().init(in, tracker, actions);
+        Input in = new StubInput(new String[]{"0", "1", "1"});
+        UserAction[] actions = {new CreateDeleteItem(output), new CreateExit(output)};
+        new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
-    }*/ /* верхние три теста после заглушки Output*/
+    } /* верхние три теста после заглушки Output*/
 
-   /* @Test
-    public void whenExit() {
-        Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"0"}
-        );
+    @Test
+    public void whenExit() { //косячный
+        Output out = new StubOutput(); //создается объект класса Output
+        Input in = new StubInput(new String[]{"0"}); //создается объект класса Input
+        Tracker tracker = new Tracker(); // Создается объект класса Tracker
+        UserAction[] actions = {new CreateExit(out)}; // создается массив команд, которые будут передаваться
+        // в метод и имитировать ввод команды
+        new StartUI(out).init(in, tracker, actions); // в конструктор StartUI передается out, запускается метод init, в который передаются параметры in, tracker
+        // и actions
+        assertThat(out.toString(), is("Menu." + System.lineSeparator() + "0. Exit" + System.lineSeparator() + "=== Exit program ===" + System.lineSeparator())); // проверка соответствия
+        // того, что выведено на экран образцу
+    }
+
+    @Test
+    public void findAllAction() {
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new Exit()
-        };
-        new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
-        ));
-    }*/
+        Item item = tracker.add(new Item("Show"));
+        Input in = new StubInput(new String[] {"0", "1"});
+        Output output = new ConsoleOutput();
+        Output out = new StubOutput();
+        UserAction[] actions = {new CreateShowAllItems(out), new CreateExit(out)};
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(out.toString(), is("===Show all items===" + System.lineSeparator() + item + System.lineSeparator()
+                         + "=== Exit program ===" + System.lineSeparator()));
+
+    }
+
+    @Test
+    public void findByNameAction() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("Find name"));
+        Input in = new StubInput(new String[] {"0", "1"});
+        Output output = new ConsoleOutput();
+        Output out = new StubOutput();
+        UserAction[] actions = {new CreatedFindItemByName(out), new CreateExit(out)};
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(out.toString(), is("=== Find item by name ===" + System.lineSeparator() + item + System.lineSeparator()
+                + "=== Exit program ===" + System.lineSeparator()));
+    }
+
+    @Test
+    public void findByIdAction() {
+
+    }
+}
+
+
 
 
     /*@Test
@@ -90,4 +126,3 @@ public class StartUITest {
         Item deleted = tracker.findById(item.getId());
         assertThat(deleted, is(nullValue())); // сравниеваем действительность/ожидание
     }*/
-}

@@ -91,7 +91,7 @@ public class StartUITest {
     public void findByIdAction() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("name"));
-        Input in = new StubInput(new String[] {"0", "id15", "1"});
+        Input in = new StubInput(new String[] {"0", "1", "1"});
         Output output = new ConsoleOutput();
         Output out = new StubOutput();
         UserAction[] actions = {new CreateFindItemById(out), new CreateExit(out)};

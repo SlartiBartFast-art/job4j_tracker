@@ -77,8 +77,8 @@ public class StartUITest {
     @Test
     public void findByNameAction() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Find name"));
-        Input in = new StubInput(new String[] {"0", "1"});
+        Item item = tracker.add(new Item("some name"));
+        Input in = new StubInput(new String[] {"0", "some name", "1"});
         Output output = new ConsoleOutput();
         Output out = new StubOutput();
         UserAction[] actions = {new CreatedFindItemByName(out), new CreateExit(out)};
@@ -89,6 +89,15 @@ public class StartUITest {
 
     @Test
     public void findByIdAction() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("name"));
+        Input in = new StubInput(new String[] {"0", "id15", "1"});
+        Output output = new ConsoleOutput();
+        Output out = new StubOutput();
+        UserAction[] actions = {new CreateFindItemById(out), new CreateExit(out)};
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(out.toString(), is("=== Find item by Id ===" + System.lineSeparator() + item + System.lineSeparator()
+                + "=== Exit program ===" + System.lineSeparator()));
 
     }
 }

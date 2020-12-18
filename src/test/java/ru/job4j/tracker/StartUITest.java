@@ -105,6 +105,22 @@ public class StartUITest {
                 + "=== Exit program ===" + System.lineSeparator()));
 
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput(); // вывод в консоль мы заменяем Интерфейсом OutPut/ 2 реализации StubOutput - заглушка, Console Output консольный вывод
+        Input in = new StubInput(new String[] {"7", "0"}); /* Пункты меню: неверный, верный.*/
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {new CreateExit(out)};
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "0. Exit%n"
+                                + "Wrong input, you can select: 0 - 0%n"
+                                + "Menu.%n"
+                                + "0. Exit%n")));
+    }
 }
 
 

@@ -10,11 +10,11 @@ public class CreateExit implements UserAction {
     @Override
     public String name() {
         return "Exit";
-    }
+    } // отображение в меню
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        out.println("=== Exit program ===");
+        //out.println("=== Exit program ===");
 
         return false;
     }

@@ -15,17 +15,10 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException { //если пользователь не валидный или если имя пользователя состоит из менее трех символов, то кинуть исключение UserInvalidException
-        if (user.isValid()) {
-            String name = user.getUsername();
-            int count = 0; //int nameUser = String.length(name);
-            for (int i = 0; i < name.length(); i++) { // как проверить что в имени больше 3-х символа
-                count = i;
-            }
-            if (count > 3) {
+        if (user.isValid() && user.getUsername().length() > 3) {
+
                 return true;
             }
-
-        }
         throw new UserInvalidException("user is not valid or name user smaller three symbols");
 
     }

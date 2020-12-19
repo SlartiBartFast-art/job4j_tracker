@@ -20,7 +20,7 @@ public class ValidateInput extends ConsoleInput { // класс получает
         int value = -1;
         do {
             try {
-                value = super.askInt(question);
+                value = in.askInt(question);
                 invalid = false;
             } catch (NumberFormatException nfe) {
                 System.out.println("Please enter validate data again.");

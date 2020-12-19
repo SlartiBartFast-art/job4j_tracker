@@ -1,6 +1,19 @@
 package ru.job4j.tracker;
 
-public class ValidateInput extends ConsoleInput {
+public class ValidateInput extends ConsoleInput { // класс получает данные из сиситемы ввода до тех пор, пока не введут правильные символы /Источник данных находится в классе ConsoleInput.
+    private final Output out;
+    private final Input in;
+
+    public ValidateInput(Output out, Input input) {
+        this.out = out;
+        this.in = input;
+    }
+
+    @Override
+    public String askStr(String question) {
+        return super.askStr(question);
+    }
+
     @Override
     public int askInt(String question) {
         boolean invalid = true;

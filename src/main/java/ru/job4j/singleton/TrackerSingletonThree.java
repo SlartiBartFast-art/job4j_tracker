@@ -1,24 +1,24 @@
 package ru.job4j.singleton;
 
 
-import ru.job4j.tracker.Item;
+
+import ru.job4j.tracker.Tracker;
 
 public class TrackerSingletonThree { // Основное отличие, мы сразу создаем и инициализируем объект.
-    private static final TrackerSingletonThree INSTANCE = new TrackerSingletonThree();
+    private static final Tracker INSTANCE = new Tracker();
 
     private TrackerSingletonThree() {
     }
 
-    public static TrackerSingletonThree getInstance() {
+    public static Tracker getInstance() {
         return INSTANCE;
     }
 
-    public Item add(Item model) {
-        return model;
-    }
+
 
     public static void main(String[] args) {
-        TrackerSingletonThree tracker = TrackerSingletonThree.getInstance();
+
+        Tracker tracker = TrackerSingletonThree.getInstance();
     }
 
 }

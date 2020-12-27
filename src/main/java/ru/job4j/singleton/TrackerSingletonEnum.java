@@ -11,5 +11,9 @@ INSTANCE;
         return tracker;
     }
 
+    public static void main(String[] args) {
+        TrackerSingletonEnum tracker = TrackerSingletonEnum.INSTANCE;
+    }
+
 
 }

@@ -1,9 +1,11 @@
 package ru.job4j.tracker;
-
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Tracker {
-    private final Item[] pow = new Item[100]; // массив заявок - возможное колличество заявлений
+    private ArrayList<Item> items = new ArrayList<Item>(100);
+    //private final Item[] pow = new Item[100]; // массив для хранения заявок - возможное колличество заявлений
     private int ids = 1; // это поле для генерации уникального идентификатора для заявки(нового ключа)
     private int size = 0; // У нас есть поле size. Это поле и есть размер нового массива.
 
@@ -15,7 +17,8 @@ public class Tracker {
      */
     public Item add(Item item) { // pow -items /cell -item
         item.setId(ids++);
-        pow[size++] = item;
+        items.add(item); // вставка в коллекцию
+        //pow[size++] = item;
         return item;
     }
 
@@ -24,46 +27,92 @@ public class Tracker {
      * Метод public Item [] findAll () возвращает массив элементов без нулевых элементов (без пустых ячеек).
       */
 
-    public Item[] findAll() { // получение списка всех заявок/
+        public ArrayList<Item> findAll() {
+            for (Item element : items) {
+                if (element != null) {
+                    ArrayList<Item> items = new ArrayList<>();
+                    items.add(element);
+                }
+            }
+            return items;
+        }
+            //for (Item element : items) {
 
-        return Arrays.copyOf(pow, size);
-    }
+            //}
+    // public Item[] findAll() { // получение списка всех заявок/
+
+       // return Arrays.copyOf(pow, size);
+
 /**проверяет в цикле все элементы массива items, сравнивая name (используя метод
  *  getName класса Item) с аргументом метода String key. Элементы, у которых
  *  совпадает name, копирует в результирующий массив и возвращает его.
  *  Алгоритм этого метода аналогичен методу findAll.
    */
-    public Item[] findByName(String key) { // создание списка по имени в новый массив
-        Item[] nameKey = new Item[pow.length];
-        int size = 0;
-        for (int i = 0; i < this.size; i++) { // было int i = 0;  i < items.length; i++;- тоже самое только длина массива
-            if (key.equals(pow[i].getName())) { // сравнение метод эквалс
-                nameKey[size] = pow[i];
-                size++;
+    public ArrayList<Item> findByName(String key) { //public Item[] findByName(String key) { // создание списка по имени в новый массив
 
-                }
+        ArrayList<Item> nameKey = new ArrayList<Item>();
+        for (Item element : items) {
+            String nameF = element.getName(); //получили Str name
+            if (key.equals(nameF)) {
+                nameKey.add(element);
             }
-        nameKey = Arrays.copyOf(nameKey, size);
-
-        return nameKey;
+        }
+             return nameKey;
     }
+
+
+        //Item[] nameKey = new Item[pow.length];
+        //int size = 0;
+        //for (int i = 0; i < this.size; i++) { // было int i = 0;  i < items.length; i++;- тоже самое только длина массива
+            //if (key.equals(pow[i].getName())) { // сравнение метод эквалс
+              //  nameKey[size] = pow[i];
+               // size++;
+
+                //}
+            //}
+        //nameKey = Arrays.copyOf(nameKey, size);
+
+        //return nameKey;
+    //}
 /**проверяет в цикле все элементы массива items, сравнивая id с аргументом int id
  и возвращает найденный Item. Если Item не найден - возвращает null.
  * */
+
     public Item findById(int id) { // получение заявки по id
-        Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = pow[index];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
+       Item rsl = null;
+        for (Item element : items) {
+            int idF = element.getId();
+            if (idF == id) {
+                rsl = element;
+                //return rsl;
             }
         }
         return rsl;
     }
+
+        //Item rsl = null;
+        //for (int index = 0; index < size; index++) {
+           // Item item = pow[index];
+           // if (item.getId() == id) {
+               // rsl = item;
+               // break;
+            //}
+       // }
+       // return rsl;
+   // }
 /**метод возвразает индекс по id
  * */
     private int indexOf(int id) {
+        int rsl = -1;
+        for (Item element : items) {
+        int idF = element.getId();
+            if (idF == id) {
+                rsl = items.indexOf(element);
+            }
+        } return rsl;
+    }
+//}
+    /**private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < size; index++) {
             if (pow[index].getId() == id) {
@@ -72,11 +121,19 @@ public class Tracker {
             }
         }
         return rsl;
-    }
+    }*/
 /** метод замены заявкиТо есть удалить заявку, которая уже есть в системе
  * и добавить в эту ячейку новую.
  * */
-    public boolean replace(int id, Item item) {
+        public boolean replace(int id, Item item) {
+            int idF = indexOf(id);
+            if (idF >= 0) {
+                items.add(idF, item);
+               return true;
+           }
+            return false;
+        }
+    /**public boolean replace(int id, Item item) {
         int index = indexOf(id); // находим индекс ячейки по id
         if (index >= 0) { // проверка что индекс полож число, т.к. метод indexOf может вернуть -1
 
@@ -85,12 +142,21 @@ public class Tracker {
             return true; // вурнуть тру если замена произведена
         }
         return false; // вернть фалсу если index по id не найден
-    }
+    }*/
 
 /** метод удаления заявки
  * */
     public boolean delete(int id) {
-        int startPos = indexOf(id); // вращаем индекс заявки которую надо рубануть
+        for (Item element : items) {
+            int idF = element.getId();
+            if (idF == id) {
+                items.remove(element);
+                return true;
+            }
+        }
+        return false;
+    }
+        /**int startPos = indexOf(id); // вращаем индекс заявки которую надо рубануть
         if (startPos == -1) {
         return  false;
         }
@@ -101,7 +167,7 @@ public class Tracker {
         size--;
         return true;
 
-    }
+    }*/
 
 
 }

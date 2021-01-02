@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Tracker {
-    private ArrayList<Item> items = new ArrayList<Item>(100);
+    private List<Item> items = new ArrayList<Item>(100);
     //private final Item[] pow = new Item[100]; // массив для хранения заявок - возможное колличество заявлений
     private int ids = 1; // это поле для генерации уникального идентификатора для заявки(нового ключа)
     private int size = 0; // У нас есть поле size. Это поле и есть размер нового массива.
@@ -27,30 +27,19 @@ public class Tracker {
      * Метод public Item [] findAll () возвращает массив элементов без нулевых элементов (без пустых ячеек).
       */
 
-        public ArrayList<Item> findAll() {
-            for (Item element : items) {
-                if (element != null) {
-                    ArrayList<Item> items = new ArrayList<>();
-                    items.add(element);
-                }
-            }
+        public List<Item> findAll() {
             return items;
         }
-            //for (Item element : items) {
 
-            //}
-    // public Item[] findAll() { // получение списка всех заявок/
-
-       // return Arrays.copyOf(pow, size);
 
 /**проверяет в цикле все элементы массива items, сравнивая name (используя метод
  *  getName класса Item) с аргументом метода String key. Элементы, у которых
  *  совпадает name, копирует в результирующий массив и возвращает его.
  *  Алгоритм этого метода аналогичен методу findAll.
    */
-    public ArrayList<Item> findByName(String key) { //public Item[] findByName(String key) { // создание списка по имени в новый массив
+    public List<Item> findByName(String key) { //public Item[] findByName(String key) { // создание списка по имени в новый массив
 
-        ArrayList<Item> nameKey = new ArrayList<Item>();
+        List<Item> nameKey = new ArrayList<Item>();
         for (Item element : items) {
             String nameF = element.getName(); //получили Str name
             if (key.equals(nameF)) {
@@ -104,13 +93,24 @@ public class Tracker {
  * */
     private int indexOf(int id) {
         int rsl = -1;
-        for (Item element : items) {
+        for (int index = 0; index < items.size() - 1; index++) {
+            if (items.get(index).getId() == id) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+    /** for (Item element : items) {
         int idF = element.getId();
+            for (int i = 0; i < items.size() - 1; i++) {
+
+            }
             if (idF == id) {
                 rsl = items.indexOf(element);
             }
-        } return rsl;
-    }
+        } return rsl;*/
+
 //}
     /**private int indexOf(int id) {
         int rsl = -1;
@@ -128,7 +128,7 @@ public class Tracker {
         public boolean replace(int id, Item item) {
             int idF = indexOf(id);
             if (idF >= 0) {
-                items.add(idF, item);
+                items.set(idF, item);
                return true;
            }
             return false;

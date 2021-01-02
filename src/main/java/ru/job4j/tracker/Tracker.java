@@ -69,7 +69,7 @@ public class Tracker {
 
     public Item findById(int id) { // получение заявки по id
 
-        int rsl = items.indexOf(id);
+        int rsl = indexOf(id);
         return (rsl >= 0 ? items.get(rsl) : null);
     }
 

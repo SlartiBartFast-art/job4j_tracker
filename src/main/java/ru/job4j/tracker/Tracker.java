@@ -68,7 +68,17 @@ public class Tracker {
  * */
 
     public Item findById(int id) { // получение заявки по id
-       Item rsl = null;
+
+        int rsl = items.indexOf(id);
+        return (rsl >= 0 ? items.get(rsl) : null);
+    }
+
+
+
+
+        /**rsl = items.indexOf(id); // нашли индекс заявки
+         if (rsl >= 0) { // проверка что такая заявка существует
+         rsl1 = items.get(rsl); // нашли элемент
         for (Item element : items) {
             int idF = element.getId();
             if (idF == id) {
@@ -76,8 +86,8 @@ public class Tracker {
                 //return rsl;
             }
         }
-        return rsl;
-    }
+        return rsl;*/
+
 
         //Item rsl = null;
         //for (int index = 0; index < size; index++) {
@@ -93,7 +103,7 @@ public class Tracker {
  * */
     private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < items.size() - 1; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
@@ -129,6 +139,7 @@ public class Tracker {
             int idF = indexOf(id);
             if (idF >= 0) {
                 items.set(idF, item);
+                item.setId(id);
                return true;
            }
             return false;
@@ -147,7 +158,15 @@ public class Tracker {
 /** метод удаления заявки
  * */
     public boolean delete(int id) {
-        for (Item element : items) {
+        int rsl = indexOf(id);
+        if (rsl >= 0) {
+            this.items.remove(rsl);
+            return true;
+        }
+        return false;
+
+    }
+       /** for (Item element : items) {
             int idF = element.getId();
             if (idF == id) {
                 items.remove(element);

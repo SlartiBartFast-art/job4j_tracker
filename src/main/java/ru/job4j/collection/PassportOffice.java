@@ -23,11 +23,6 @@ public class PassportOffice {
 
     public Citizen get(String passport) {
 
-        for (String namekey : citizens.keySet()) {
-            if (namekey.equals(passport)) {
-                return citizens.get(namekey);
-            }
-        }
-        return null;
+        return citizens.get(passport);
     }
 }

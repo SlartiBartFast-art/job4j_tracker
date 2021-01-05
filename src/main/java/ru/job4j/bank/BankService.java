@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
-    //ArrayList<Account> accounts = new ArrayList<>();
+
 
     public void addUser(User user) {
 
@@ -20,13 +20,9 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         User user1 = findByPassport(passport); // нашли по паспорту
         if (user1 != null) {
-            for (User user2 : users.keySet()) {
-                List<Account> account1 = users.get(user2);
-                    if (!account1.equals(account)) {
-                        account1.add(account);
-                        users.put(user1, account1);
-                    }
-            }
+            List<Account> accounts = users.get(user1);
+            accounts.add(account);
+            users.put(user1, accounts);
 
         }
 
@@ -35,7 +31,7 @@ public class BankService {
 /**найти пользователя по паспорту*/
     public User findByPassport(String passport) {
         for (User user : users.keySet()) {
-            //String passK = user.getPassport();
+
             if (user.getPassport().equals(passport)) {
                 return user;
             }

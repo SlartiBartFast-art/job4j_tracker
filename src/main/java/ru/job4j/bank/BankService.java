@@ -60,13 +60,13 @@ public class BankService {
                                  String destPassport, String destRequisite, double amount) { // куда
         boolean rsl = false;
 
-            Account account4 = findByRequisite(srcPassport, srcRequisite); // нашли конкретный счет
+            Account accountSrc = findByRequisite(srcPassport, srcRequisite); // нашли конкретный счет
 
-        Account account5 = findByRequisite(destPassport, destRequisite);
-                String reqD = account5.getRequisite();
-                if (findByRequisite(srcPassport, srcRequisite) != null && findByRequisite(destPassport, destRequisite) != null && findByRequisite(srcPassport, srcRequisite).getBalance() >= amount) {
-                   account5.setBalance(account5.getBalance() + account4.getBalance());
-                   account4.setBalance(account4.getBalance() - account5.getBalance());
+        Account accountDest = findByRequisite(destPassport, destRequisite);
+
+                if (accountSrc != null && accountDest != null && accountSrc.getBalance() >= amount) {
+                   accountDest.setBalance(accountDest.getBalance() + accountSrc.getBalance());
+                   accountSrc.setBalance(accountSrc.getBalance() - accountDest.getBalance());
                    rsl = true;
                 }
                 return rsl;

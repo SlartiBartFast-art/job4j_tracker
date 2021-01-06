@@ -11,18 +11,16 @@ public class BankService {
 
 
     public void addUser(User user) {
-
-        if (!users.containsKey(user)) {
-            users.put(user, new ArrayList<>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
         User user1 = findByPassport(passport); // нашли по паспорту
         if (user1 != null) {
             List<Account> accounts = users.get(user1);
+            if (!accounts.contains(account)) {
             accounts.add(account);
-            users.put(user1, accounts);
+            }
 
         }
 
@@ -48,9 +46,7 @@ public class BankService {
                 List<Account> accounts = users.get(user1); //получили список счетов
 
             for (int i = 0; i < accounts.size(); i++) {
-                Account account3 = accounts.get(i);
-                String findRek = account3.getRequisite();
-                if (requisite.equals(findRek)) {
+                if (requisite.equals(accounts.get(i).getRequisite())) {
                     return accounts.get(i);
                 }
             }
@@ -68,7 +64,7 @@ public class BankService {
 
         Account account5 = findByRequisite(destPassport, destRequisite);
                 String reqD = account5.getRequisite();
-                if (findByRequisite(srcPassport, srcRequisite) != null || amount >= 0) {
+                if (findByRequisite(srcPassport, srcRequisite) != null && findByRequisite(destPassport, destRequisite) != null && findByRequisite(srcPassport, srcRequisite).getBalance() >= amount) {
                    account5.setBalance(account5.getBalance() + account4.getBalance());
                    account4.setBalance(account4.getBalance() - account5.getBalance());
                    rsl = true;

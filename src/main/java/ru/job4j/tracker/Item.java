@@ -1,10 +1,12 @@
 package ru.job4j.tracker;
 
 import org.w3c.dom.ls.LSOutput;
-
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.time.LocalDateTime;
 
-public class Item { //описывает модель заявления
+public class Item implements Comparable<Item> { //описывает модель заявления
 
 
     private int id; // уникальный номер заявления
@@ -51,6 +53,12 @@ public class Item { //описывает модель заявления
     public String toString() {
         return "Item{" + "id=" + id + ", name='" + name + '\'' + ", created=" + created + '}';
     }
+
+    @Override
+    public int compareTo(Item another) {
+        return Integer.compare(id, another.id);
+    }
+
 }
 
 

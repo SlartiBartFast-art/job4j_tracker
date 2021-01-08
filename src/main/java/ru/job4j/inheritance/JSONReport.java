@@ -6,7 +6,6 @@ public class JSONReport extends TextReport {
         return "name" + " : "  + name + System.lineSeparator() + "body" + " : " + body;
     }
 
-
     public static void main(String[] args) {
         JSONReport report = new JSONReport();
         String text = report.generate("name1", "body1");

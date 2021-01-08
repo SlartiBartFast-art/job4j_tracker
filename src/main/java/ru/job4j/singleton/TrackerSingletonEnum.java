@@ -1,6 +1,5 @@
 package ru.job4j.singleton;
 
-
 import ru.job4j.tracker.Tracker;
 
 public enum TrackerSingletonEnum {
@@ -14,6 +13,4 @@ INSTANCE;
     public static void main(String[] args) {
         TrackerSingletonEnum tracker = TrackerSingletonEnum.INSTANCE;
     }
-
-
 }

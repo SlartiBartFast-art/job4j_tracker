@@ -6,6 +6,8 @@ public class College {
         student.setFioId("Ivanov Ivan");
         student.setGroup(358);
         student.setReceiptDate("02.12.2020");
-        System.out.println("FIO: " + student.getFioId() + " Group №: " + student.getGroup() + " Date reception: " + student.getReceiptDate());
+        System.out.println("FIO: " + student.getFioId() + " Group №: "
+                + student.getGroup() + " Date reception: "
+                + student.getReceiptDate());
     }
 }

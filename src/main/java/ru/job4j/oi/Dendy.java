@@ -1,6 +1,6 @@
 package ru.job4j.oi;
-import java.util.Scanner;
 
+import java.util.Scanner;
 
 public class Dendy {
     public static void main(String[] args) {

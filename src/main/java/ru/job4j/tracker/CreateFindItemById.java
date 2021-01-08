@@ -1,10 +1,14 @@
 package ru.job4j.tracker;
 
 public class CreateFindItemById implements UserAction {
-    public final Output out;
+    private final Output out;
 
     public CreateFindItemById(Output out) {
         this.out = out;
+    }
+
+    public Output getOut() {
+        return out;
     }
 
     @Override

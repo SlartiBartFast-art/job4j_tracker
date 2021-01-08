@@ -1,6 +1,10 @@
 package ru.job4j.tracker;
 
-public class ValidateInput implements Input { // класс получает данные из сиситемы ввода до тех пор, пока не введут правильные символы /Источник данных находится в классе ConsoleInput.
+/**класс получает данные из сиситемы ввода до тех пор,
+ * пока не введут правильные символы /Источник данных находится в классе ConsoleInput.
+ * */
+
+public class ValidateInput implements Input {
     private final Output out;
     private final Input in;
 

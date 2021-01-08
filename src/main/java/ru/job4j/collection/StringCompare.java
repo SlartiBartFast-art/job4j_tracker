@@ -5,11 +5,10 @@ import java.util.Comparator;
 //import static jdk.vm.ci.meta.JavaKind.Char;
 //import static jdk.vm.ci.meta.JavaKind.fromPrimitiveOrVoidTypeChar;
 
-
 public class StringCompare implements Comparator<String> {
+
     @Override
     public int compare(String o1, String o2) { // сравнить два слова
-
        /** int rsl = -1;
         char[] resX = o1.toCharArray();
         char[] resY = o2.toCharArray();
@@ -28,4 +27,4 @@ int x = Math.min(o1.length(), o2.length());
         }
         return Integer.compare(o1.length(), o2.length());
     }
-    }
+}

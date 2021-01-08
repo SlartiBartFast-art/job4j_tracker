@@ -15,10 +15,7 @@ public class UniqueText {
             if (!check.contains(stringChk)) {
                 return false;
             }
-
-
         }
-
         return rsl;
     }
 }

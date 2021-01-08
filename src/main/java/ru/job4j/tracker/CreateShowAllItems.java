@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateShowAllItems implements UserAction {
-    public final Output out;
+    private final Output out;
 
     public CreateShowAllItems(Output out) {
         this.out = out;
     }
+
+    public Output getOut() {
+        return out;
+    }
+
     @Override
     public String name() {
         return "Show";

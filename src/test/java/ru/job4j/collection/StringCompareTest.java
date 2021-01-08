@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 
 public class StringCompareTest {
 
-
     @Test
     public void whenStringsAreEqualThenZero() {
         StringCompare compare = new StringCompare();

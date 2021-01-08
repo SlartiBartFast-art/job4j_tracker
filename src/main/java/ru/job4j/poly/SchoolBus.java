@@ -3,7 +3,8 @@ package ru.job4j.poly;
 public class SchoolBus implements Vehicle {
     @Override
     public void move() {
-        System.out.println(getClass() + "Автобус перевозит школьников, двигается по скоростным рассам");
+        System.out.println(getClass()
+                + "Автобус перевозит школьников, двигается по скоростным рассам");
 
     }
 

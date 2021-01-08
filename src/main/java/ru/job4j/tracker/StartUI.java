@@ -9,7 +9,9 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) { // два объекта Scanner scanner/Input input(Отвязали, провели интерфейс) , Tracker tracker
+/** два объекта Scanner scanner/Input input(Отвязали, провели интерфейс) , Tracker tracker
+ * */
+    public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -19,9 +21,7 @@ public class StartUI {
                 continue;
             }
             UserAction action = actions.get(select);
-            //UserAction action = actions[select];
             run = action.execute(input, tracker);
-
         }
     }
 
@@ -32,9 +32,8 @@ public class StartUI {
 
             out.println(index + ". " + action.name());
             index++;
-        } //for (int index = 0; index < actions.length; index++)
+        }
     }
-
 
         public static void main(String[]args) {
             Output output = new ConsoleOutput();
@@ -57,6 +56,5 @@ public class StartUI {
                                     new CreatedFindItemByName(output),
                                     new CreateExit(output)};
             new StartUI(output).init(input, tracker, actions);*/
-
         }
     }

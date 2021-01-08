@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 public class Item implements Comparable<Item> { //описывает модель заявления
 
-
     private int id; // уникальный номер заявления
     private String name; // название заявления
     private LocalDateTime created = LocalDateTime.now();
@@ -16,6 +15,7 @@ public class Item implements Comparable<Item> { //описывает модел�
     public Item(String name) {
         this.name = name;
     }
+
     public Item() {
     }
 
@@ -31,27 +31,32 @@ public class Item implements Comparable<Item> { //описывает модел�
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-    public String getName() {
 
+    public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public LocalDateTime getCreated() {
 
+    public LocalDateTime getCreated() {
         return created;
     }
-    public void setCreated(LocalDateTime created) {
 
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
+
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", name='" + name + '\'' + ", created=" + created + '}';
+        return "Item{" + "id="
+                + id + ", name='" + name + '\'' + ", created="
+                + created + '}';
     }
 
     @Override

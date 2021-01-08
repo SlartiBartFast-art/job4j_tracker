@@ -23,6 +23,7 @@ public class BankServiceTest {
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
         assertNull(bank.findByRequisite("34", "5546"));
     }
+
     @Test
     public void addAccount() {
         User user = new User("3434", "Petr Arsentev");

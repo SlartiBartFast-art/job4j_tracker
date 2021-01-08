@@ -13,7 +13,6 @@ public class Train implements Vehicle {
         count++;
     }
 
-
     @Override
     public double fuel(double fuel, double distance, double weightTrain) {
         double price = ((weightTrain * distance) * fuel) / 10000;

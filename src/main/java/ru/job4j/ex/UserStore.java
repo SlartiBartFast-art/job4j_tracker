@@ -1,9 +1,10 @@
 package ru.job4j.ex;
 
 import java.util.Scanner;
-
+/** если пользователя не нашли в списке, то кинуть исключение UserNotFoundException.
+ * */
 public class UserStore {
-    public static User findUser(User[] users, String login) throws UserNotFoundException { // если пользователя не нашли в списке, то кинуть исключение UserNotFoundException.
+    public static User findUser(User[] users, String login) throws UserNotFoundException {
 
         for (User pow : users) {
 
@@ -13,14 +14,15 @@ public class UserStore {
         }
         throw new UserNotFoundException("user not fund in system");
     }
+/**если пользователь не валидный или если имя пользователя
+ * состоит из менее трех символов, то кинуть исключение UserInvalidException
+ * */
 
-    public static boolean validate(User user) throws UserInvalidException { //если пользователь не валидный или если имя пользователя состоит из менее трех символов, то кинуть исключение UserInvalidException
+    public static boolean validate(User user) throws UserInvalidException {
         if (user.isValid() && user.getUsername().length() > 3) {
-
                 return true;
             }
         throw new UserInvalidException("user is not valid or name user smaller three symbols");
-
     }
 
     public static void main(String[] args) {

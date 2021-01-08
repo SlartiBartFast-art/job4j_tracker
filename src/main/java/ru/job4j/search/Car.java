@@ -3,16 +3,34 @@ package ru.job4j.search;
 import java.util.LinkedList;
 
 public class Car {
-    String model;
-    int priority;
+    private String model;
+    private int priority;
+
     public Car(String model, int priority) {
         this.model = model;
         this.priority = priority;
+    }
 
-        }
-        public Car(String model) {
+    public Car(String model) {
         this.model = model;
     }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public static void main(String[] args) {
         LinkedList<Car> cars = new LinkedList<Car>();
         Car ferrari = new Car("Ferrari 360 Spider", 0);
@@ -33,8 +51,10 @@ public class Car {
         cars.add(1, hammer);
         System.out.println(cars);
     }
+
     @Override
     public String toString() {
-        return "Car{" + "model='" + model + '\'' + '}';
+        return "Car{" + "model='"
+                + model + '\'' + '}';
     }
 }

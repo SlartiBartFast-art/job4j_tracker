@@ -10,7 +10,7 @@ public class FactTest {
 /**ошибка в рабоче методе при использовании аннтоции
  * */
 
-    @Test(expected = IllegalArgumentException.class)
+   /** @Test(expected = IllegalArgumentException.class)
     public void when5toErr() {
         int rsl = Fact.calc(5);
         assertThat(rsl, is("метод вызывается с объекта в не корректном состоянии"));

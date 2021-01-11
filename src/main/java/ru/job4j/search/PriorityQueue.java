@@ -19,11 +19,10 @@ public class PriorityQueue {
      * Метод принимает на вход заявку и добавляет ее в очередь.
      * Если встречаются 2 задания с одинаковым приоритетом, то в очереди
      * они распределяются по принципу FIFO.
-     *
      * @param task задача которая добавляется в очередь
-     *             Task task = new Task(String desc, int priority); /список задач и день с указанием их важности
-     *             <p>
-     *             task.add(int priority, String desc, );
+     * Task task = new Task(String desc, int priority);
+     * список задач и день с указанием их важности
+     * task.add(int priority, String desc, );
      */
     public void put(Task task) {
         int index = 0;

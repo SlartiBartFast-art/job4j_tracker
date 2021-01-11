@@ -36,7 +36,6 @@ public class BankService {
      * @param passport паспортные данные пользователя
      * @param account новый счет пользователя
      */
-
     public void addAccount(String passport, Account account) {
         User user1 = findByPassport(passport);
         if (user1 != null) {
@@ -91,7 +90,6 @@ public class BankService {
      * @return true перечисление было выполнено успешно.
      *         false если перечисление не было произведено.
      */
-
     public boolean transferMoney(String srcPassport, String srcRequisite, // откуда
                                  String destPassport, String destRequisite, double amount) { // куда
         boolean rsl = false;

@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.is;
 
 public class LexSortTest {
 
-   /** @Test
+    @Test
     public void sortNum1and2and10() {
         String[] input = {
                 "10. Task.",
@@ -22,5 +22,4 @@ public class LexSortTest {
         Arrays.sort(input, new LexSort());
         assertThat(input, is(out));
     }
-}*/
 }

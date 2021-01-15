@@ -11,8 +11,7 @@ public class DepDescComp implements Comparator<String> {
         int rsl = wordO2[0].compareTo(world[0]);
         if (rsl == 0) {
             return o1.compareTo(o2);
-        } else {
-            return rsl;
         }
+        return rsl;
     }
 }

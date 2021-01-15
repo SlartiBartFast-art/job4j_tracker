@@ -21,22 +21,12 @@ public class Departments {
                 if (start.equals("")) {
                     start = el;
                     tmp.add(el);
-                    System.out.println(tmp);
                 } else {
                     tmp.add(start + "/" + el);
-                    System.out.println(tmp);
                 }
             }
         }
-        int i = 0;
-        List<String> rsl = new ArrayList<>();
-        for (String elk : tmp) {
-            rsl.add(i, elk);
-            i++;
-            System.out.println(i);
-            System.out.println(rsl);
-        }
-        return rsl;
+        return new ArrayList<>(tmp);
     }
 
     /** метод сортирует по возрастанию

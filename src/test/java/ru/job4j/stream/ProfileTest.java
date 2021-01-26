@@ -13,20 +13,23 @@ import static org.junit.Assert.*;
 
 
 
-public class ProfileTest {
-    private List<Profile> profiles = new ArrayList<>();
+
+public class ProfileTest { /*
+    private List<Address>  = new ArrayList<>();
 
 
-    private Object List;
+
 
     @Before
     public void setUp() {
-        profiles.add(new Profile(new Address("NewVasyki", "Surname1", 145, 89)));
+        profiles.add(new Profile(
+                new Address("NewVasyki", "Surname1",
+                        145, 89)));
     }
 
     @Test
     public void collect2() {
-        List<Address> rsl = Profile.collect(profiles);
+        List<Profile> rsl = Profile.collect(profiles);
 
         List<Address> expected = new ArrayList<>();
         expected.add(new Address("NewVasyki", "Surname1", 145, 89));
@@ -35,5 +38,5 @@ public class ProfileTest {
     }
 /*"Address{" + "city=" + Address.class + "street=" + Address.class + "apartment=" + Address.class + "89" + '}'
 * */
-
+//
 }

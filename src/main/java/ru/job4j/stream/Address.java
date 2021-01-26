@@ -1,8 +1,9 @@
 package ru.job4j.stream;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Address {
+public class Address implements Comparator<Address> {
 
     private static String city;
     private String street;
@@ -32,7 +33,12 @@ public class Address {
         return home;
     }
 
-    /*@Override
+    @Override
+    public int compare(Address o1, Address o2) {
+        return o1.getCity().compareTo(o2.getCity());
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -40,24 +46,14 @@ public class Address {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Student student = (Student) o;
-        return score == .score
-                && Objects.equals(surname, student.surname);
+        Address address = (Address) o;
+        return home == address.home
+                && apartment == address.apartment
+                && Objects.equals(street, address.street);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(score, surname);
-    }*/
-    @Override
-    public boolean equals(Address address) {
-        Address address1 = (Address) address;
-        return address.equals(address);
+        return Objects.hash(street, home, apartment);
     }
-    @Override
-    public int hashCode() {
-        return Objects.hash(city, street, home, apartment);
-    }
-
-
 }

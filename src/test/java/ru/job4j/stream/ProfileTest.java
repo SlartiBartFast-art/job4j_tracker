@@ -21,6 +21,21 @@ public class ProfileTest {
     }
 
     @Test
+            public void collectAddr() {
+        Profiles ps = new Profiles();
+
+        List<Address> rsl = ps.collect1(profiles);
+        List<Address> expected = new ArrayList<>();
+        expected.add(new Address("NewVasyki", "Surname1", 145, 89));
+        expected.add(new Address("Moskow", "Big Vernadskya", 90, 205));
+        expected.add(new Address("Vladivostok", "Vosstaniya", 15, 25));
+        expected.add(new Address("NewVasyki", "Surname1", 145, 89));
+        assertThat(rsl, is(expected));
+    }
+
+
+
+    @Test
     public void collect2() {
         Profiles ps = new Profiles();
 

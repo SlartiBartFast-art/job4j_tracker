@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Address implements Comparator<Address> {
 
-    private static String city;
+    private String city;
     private String street;
     private int home;
     private int apartment;
@@ -55,5 +55,15 @@ public class Address implements Comparator<Address> {
     @Override
     public int hashCode() {
         return Objects.hash(street, home, apartment);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{"
+                + "city=" + city
+                + "street='" + street + '\''
+                + ", home=" + home
+                + ", apartment=" + apartment
+                + '}';
     }
 }

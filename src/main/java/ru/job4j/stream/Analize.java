@@ -60,7 +60,8 @@ public class Analize {
         info.changed = (int) previous
                 .stream()
                 .filter(current::contains)
-                .filter(o -> !o.getName().equals(current.get(current.indexOf(o)).getName()))
+                .filter(o -> !o.getName().equals(current.stream().map(j -> j.getName())))
+                        //current.get(current.indexOf(o)).getName()) было
                 .count();
         return info;
     }

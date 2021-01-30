@@ -50,7 +50,7 @@ public class PhoneDictionary {
         Predicate<Person> combine4 = person -> person.getPhone().contains(key);
         Predicate<Person> combine =  combine1.or(cobbine2).or(combine3).or(combine4);
         ArrayList<Person> rsl = new ArrayList<>();
-        for (Person person : persons) {
+        for (var person : persons) {
             if (combine.test(person)) {
                 rsl.add(person);
             }

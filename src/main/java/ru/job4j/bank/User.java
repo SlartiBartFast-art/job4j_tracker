@@ -1,13 +1,14 @@
 package ru.job4j.bank;
 import java.util.Objects;
+import java.util.Optional;
 
 public class User {
-    private String passport;
-    private String username;
+    private Optional<String> passport;
+    private Optional<String> username;
 
     public User(String passport, String username) {
-        this.passport = passport;
-        this.username = username;
+        this.passport = Optional.of(passport);
+        this.username = Optional.of(username);
     }
 
     public String getPassport() {
@@ -15,15 +16,15 @@ public class User {
     }
 
     public void setPassport(String passport) {
-        this.passport = passport;
+        this.passport = Optional.ofNullable(passport);
     }
 
-    public String getUsername() {
+    public Optional<String> getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = Optional.ofNullable(username);
     }
 
     @Override

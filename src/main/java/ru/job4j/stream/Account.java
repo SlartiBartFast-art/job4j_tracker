@@ -23,26 +23,32 @@ public class Account {
             this.name = name;
             return this;
         }
+
         Builder buildSurname(String surname) {
             this.surname = surname;
             return this;
         }
+
         Builder buildSAge(byte age) {
             this.age = age;
             return this;
         }
+
         Builder buildGender(String gender) {
             this.gender = gender;
             return this;
         }
+
         Builder buildPassport(int passport) {
             this.passport = passport;
             return this;
         }
+
         Builder buildAddress(String address) {
             this.address = address;
             return this;
         }
+
         Account build() {
             Account account = new Account();
             account.name = name;

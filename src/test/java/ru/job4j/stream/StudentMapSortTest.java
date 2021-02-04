@@ -11,7 +11,6 @@ import java.util.Map;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
 public class StudentMapSortTest {
     private List<Student> students = new ArrayList<>();
 
@@ -33,7 +32,5 @@ public class StudentMapSortTest {
         expected.put("Petr Ivanov", new Student(1, "Petr Ivanov"));
         expected.put("Ivan Vasilevsky", new Student(3, "Ivan Vasilevsky"));
         assertThat(rsl, is(expected));
-
-
     }
 }

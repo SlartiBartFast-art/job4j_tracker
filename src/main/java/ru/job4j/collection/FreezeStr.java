@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-/** не доделанное задание
- * */
+/**
+ * не доделанное задание
+ */
 public class FreezeStr {
     public static boolean eq(String left, String right) {
         boolean rsl = true;
@@ -20,7 +21,6 @@ public class FreezeStr {
             world.add(string);
             System.out.println(world);
         }
-
 
         for (String string : arr) {
             System.out.println(string);

@@ -7,16 +7,15 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
 public class IntegerToListTest {
-   Integer[][] duosArr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
 
+    private Integer[][] duosArr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
 
     @Test
     public void sorteToInt() {
         IntegerToList listT = new IntegerToList();
 
-        List<Integer> rsl = listT.sorteToInt(duosArr);
+        List<Integer> rsl = IntegerToList.sorteToInt(duosArr);
         List<Integer> expect = new ArrayList<>();
         expect.add(1);
         expect.add(2);

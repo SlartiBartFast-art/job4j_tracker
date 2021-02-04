@@ -29,8 +29,9 @@ public class Departments {
         return new ArrayList<>(tmp);
     }
 
-    /** метод сортирует по возрастанию
-     * */
+    /**
+     * метод сортирует по возрастанию
+     */
     public static void sortAsc(List<String> deps) {
         deps.sort(Comparator.naturalOrder());
     }
@@ -40,20 +41,7 @@ public class Departments {
      */
 
     public static void sortDesc(List<String> orgs) {
+
         Collections.sort(orgs, new DepDescComp());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

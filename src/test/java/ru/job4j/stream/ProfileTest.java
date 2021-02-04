@@ -33,13 +33,9 @@ public class ProfileTest {
         assertThat(rsl, is(expected));
     }
 
-
-
     @Test
     public void collect2() {
         Profiles ps = new Profiles();
-
-
         List<Address> rsl = ps.collect(profiles);
         List<Address> expected = new ArrayList<>();
         expected.add(new Address("Moskow", "Big Vernadskya", 90, 205));

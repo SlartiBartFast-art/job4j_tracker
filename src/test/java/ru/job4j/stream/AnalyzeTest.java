@@ -60,6 +60,7 @@ public class AnalyzeTest {
                         ))
                 );
     }
+
         @Test
         public void whenBestPupil() {
             Tuple best = Analyze.bestStudent(

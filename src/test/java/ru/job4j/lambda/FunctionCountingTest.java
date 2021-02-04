@@ -7,7 +7,16 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class FunctionCountingTest {
-    FunctionCounting diapason = new FunctionCounting();
+
+    private FunctionCounting diapason = new FunctionCounting();
+
+    public FunctionCounting getDiapason() {
+        return diapason;
+    }
+
+    public void setDiapason(FunctionCounting diapason) {
+        this.diapason = diapason;
+    }
 
     @Test
     public void whenLinearFunctionCountThenLinearResults() {

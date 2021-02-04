@@ -29,6 +29,7 @@ public class BankService {
      * {@link ru.job4j.bank.User}
      */
     public void addUser(User user) {
+
         users.putIfAbsent(user, new ArrayList<>());
     }
 
@@ -39,8 +40,10 @@ public class BankService {
      */
     public void addAccount(String passport, Account account) {
         Optional<User> user1 = findByPassport(passport);
+
         if (user1.isPresent()) {
-            List<Account> accounts = users.get(user1);
+            User user = user1.get();
+            List<Account> accounts = users.get(user);
             if (!accounts.contains(account)) {
                 accounts.add(account);
             }
@@ -79,7 +82,8 @@ public class BankService {
         Optional<User> user1 = findByPassport(passport);
         //Account rsl =
         if (user1.isPresent()) {
-           return users.get(user1)
+            User user = user1.get();
+           return users.get(user)
                    .stream()
                    .filter(account -> account.getRequisite().equals(requisite))
                    .findFirst();

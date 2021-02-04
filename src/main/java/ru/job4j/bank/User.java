@@ -3,12 +3,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class User {
-    private Optional<String> passport;
-    private Optional<String> username;
+    private String passport;
+    private String username;
 
     public User(String passport, String username) {
-        this.passport = Optional.of(passport);
-        this.username = Optional.of(username);
+        this.passport = passport;
+        this.username = username;
     }
 
     public String getPassport() {
@@ -16,15 +16,15 @@ public class User {
     }
 
     public void setPassport(String passport) {
-        this.passport = Optional.ofNullable(passport);
+        this.passport = passport;
     }
 
-    public Optional<String> getUsername() {
+    public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
-        this.username = Optional.ofNullable(username);
+        this.username = username;
     }
 
     @Override

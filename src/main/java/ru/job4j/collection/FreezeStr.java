@@ -2,11 +2,30 @@ package ru.job4j.collection;
 
 import java.util.*;
 
-
 /**
  * не доделанное задание
  */
 public class FreezeStr {
+
+    /*public static boolean eq(String left, String right) {
+        boolean rsl = true;
+        // Map<Character, String> world = new HashMap();
+
+        String txt = left;
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>(40);
+        for (int i = 0; i < txt.length(); ++i) {
+            char c = txt.charAt(i);
+            // если надо, то проверяем является ли символ буквой
+            if (Character.isLetter(c)) {
+                if (map.containsKey(c)) {
+                    map.put(c, map.get(c) + 1);
+                } else {
+                    map.put(c, 1);
+                }
+            }
+        }
+    }
+
    /* public static boolean eq(String left, String right) {
         boolean rsl = true;
         Map<Character, String> world = new HashMap();

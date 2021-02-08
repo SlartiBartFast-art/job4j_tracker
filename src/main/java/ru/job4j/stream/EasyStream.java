@@ -57,15 +57,7 @@ public class EasyStream {
      * собирает все элементы из источника по заданным условиям map и filter.
      */
     public List<Integer> collect() {
-      /*  List<Integer> rsl = new ArrayList<>();
-        EasyStream easyStream = map(fun);
-        EasyStream easyStream1 = filter(fun);
-//List<Integer> rew =  ;
-//List<Integer> rew1 = ;
-        rsl.addAll(easyStream.getPow());
-        rsl.addAll(easyStream1.getPow());
-        return rsl;
-    }*/
+
         return pow;
     }
 }

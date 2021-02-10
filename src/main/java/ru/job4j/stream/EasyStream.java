@@ -10,13 +10,13 @@ public class EasyStream {
 
     public List<Integer> pow;
 
-    private EasyStream(List<Integer> integers) {
+   private EasyStream(List<Integer> integers) {
         pow = integers;
     }
+    private EasyStream() {
+        }
 
-    public List<Integer> getPow() {
-        return pow;
-    }
+
 
     /**
      * получает исходные данные.
@@ -57,7 +57,8 @@ public class EasyStream {
      * собирает все элементы из источника по заданным условиям map и filter.
      */
     public List<Integer> collect() {
-
+        
         return pow;
     }
+
 }
